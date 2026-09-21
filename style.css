@@ -1,0 +1,135 @@
+:root {
+  --body-clr: #ded6c8;
+  --body-shadow: #b9ae9a;
+  --screen-bg: #2b3b2f;
+  --led: #9ef29b;
+  --led-dim: #4f6b52;
+  --num-key: #3a372f;
+  --num-key-text: #f2ede2;
+  --fn-key: #c7bda8;
+  --fn-key-text: #2b271f;
+  --op-key: #d97a3f;
+  --op-key-text: #fff8f0;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: radial-gradient(circle at 50% 20%, #3a3d46, #17181c 70%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'IBM Plex Mono', monospace;
+  padding: 24px;
+}
+
+.calculator {
+  width: 340px;
+  background: var(--body-clr);
+  border-radius: 22px;
+  padding: 22px;
+  box-shadow:
+    0 2px 0 var(--body-shadow) inset,
+    0 20px 40px rgba(0, 0, 0, 0.45);
+}
+
+.screen {
+  background: var(--screen-bg);
+  border-radius: 12px;
+  padding: 22px 20px 16px;
+  margin-bottom: 18px;
+  box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.5);
+}
+
+.history {
+  min-height: 18px;
+  text-align: right;
+  color: var(--led-dim);
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  overflow-wrap: break-word;
+}
+
+.display {
+  text-align: right;
+  color: var(--led);
+  font-size: 2.6rem;
+  letter-spacing: 1px;
+  text-shadow: 0 0 10px rgba(158, 242, 155, 0.55);
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: none;
+}
+
+.display::-webkit-scrollbar { display: none; }
+
+.keys {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.key {
+  border: none;
+  border-radius: 50%;
+  aspect-ratio: 1 / 1;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 1.15rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 0.06s ease, filter 0.15s ease;
+}
+
+.key:active { transform: scale(0.94); }
+
+.key-num {
+  background: var(--num-key);
+  color: var(--num-key-text);
+}
+
+.key-num:hover { filter: brightness(1.15); }
+
+.key-fn {
+  background: var(--fn-key);
+  color: var(--fn-key-text);
+}
+
+.key-fn:hover { filter: brightness(1.08); }
+
+.key-op {
+  background: var(--op-key);
+  color: var(--op-key-text);
+  font-size: 1.3rem;
+}
+
+.key-op:hover { filter: brightness(1.1); }
+
+.key-eq {
+  background: var(--op-key);
+  color: var(--op-key-text);
+  grid-column: span 2;
+  border-radius: 30px;
+  aspect-ratio: auto;
+  font-size: 1.3rem;
+}
+
+.key-zero {
+  grid-column: span 2;
+  border-radius: 30px;
+  aspect-ratio: auto;
+  text-align: left;
+  padding-left: 26px;
+}
+
+@media (max-width: 380px) {
+  .calculator { width: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
